@@ -1,0 +1,23 @@
+### Login user
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+    "email": "test@example.com",
+    "password": "Test123909090"
+}
+
+### Register user
+POST http://localhost:8080/api/auth/register
+Content-Type: application/json
+
+{
+    "name": "Test User",
+    "email": "test@example.com",
+    "password": "Test123909090",
+    "role_id": 1
+}
+
+### Admin Route
+POST http://localhost:8080/api/admin/users
+Content-Type: application/json

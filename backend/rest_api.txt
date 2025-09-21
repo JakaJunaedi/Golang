@@ -1,0 +1,26 @@
+POST   /api/auth/register        # Register new user
+POST   /api/auth/login           # Login user
+POST   /api/auth/logout          # Logout user
+POST   /api/auth/refresh         # Refresh access token
+POST   /api/auth/forgot-password # Request password reset
+POST   /api/auth/reset-password  # Reset password with token
+
+# USER ENDPOINTS (Requires Authentication)
+GET    /api/user/me              # Get current user info
+GET    /api/user/profile         # Get user profile
+PUT    /api/user/profile         # Update user profile
+GET    /api/user/dashboard       # User dashboard
+
+# ADMIN ENDPOINTS (Requires Admin Role)
+GET    /api/admin/users          # Get all users
+POST   /api/admin/users          # Create new user
+PUT    /api/admin/users/:id      # Update user by ID
+DELETE /api/admin/users/:id      # Delete user by ID
+GET    /api/admin/dashboard      # Admin dashboard
+
+# MANAGER ENDPOINTS (Requires Manager/Admin Role)
+GET    /api/manager/reports      # Get reports
+GET    /api/manager/dashboard    # Manager dashboard
+
+# UTILITY ENDPOINTS
+GET    /api/health 
