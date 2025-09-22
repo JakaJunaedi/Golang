@@ -3,6 +3,7 @@ package config
 import (
 	"log"
 	"os"
+	"time"
 
 	"backend/models"
 
@@ -24,19 +25,31 @@ func InitDatabase() {
 		log.Fatal("Failed to connect to database:", err)
 	}
 
-	// Auto migrate tables
-	err = DB.AutoMigrate(
-		&models.User{},
-		&models.Role{},
-		&models.Permission{},
-		&models.RolePermission{},
-	)
+	// 🚀 Matikan AutoMigrate di production!
+	// Jalankan migrate sekali pakai tool (golang-migrate/dbmate).
+
+	// #### Auto migrate tables (hapus comment jika belum genarate/ buat database baru) ####
+	// err = DB.AutoMigrate(
+	//	&models.User{},
+	//	&models.Role{},
+	//	&models.Permission{},
+	//	&models.RolePermission{},
+	// )
+
 	if err != nil {
 		log.Fatal("Failed to migrate database:", err)
 	}
 
 	// Seed initial data
 	seedData()
+	log.Println("Database initialized successfully")
+
+	// Pooling setup (jangan terlalu tinggi karena Neon pakai PgBouncer)
+	sqlDB, _ := DB.DB()
+	sqlDB.SetMaxIdleConns(5)
+	sqlDB.SetMaxOpenConns(10)
+	sqlDB.SetConnMaxLifetime(time.Hour)
+
 	log.Println("Database initialized successfully")
 }
 
