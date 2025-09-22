@@ -18,6 +18,6 @@ Content-Type: application/json
     "role_id": 1
 }
 
-### Admin Route
-POST http://localhost:8080/api/admin/users
-Content-Type: application/json
+### profile
+GET http://localhost:8080/api/user/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJyb2xlIjoibWFuYWdlciIsInN1YiI6ImFjY2VzcyIsImV4cCI6MTc1ODYxMzkwMiwiaWF0IjoxNzU4NTI3NTAyfQ.TiZuV5FUpTprgTlAffa8cyjQKEFF8y0M4JlUJKS9uxo
